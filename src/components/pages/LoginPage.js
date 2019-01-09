@@ -25,6 +25,6 @@ LoginPage.propTypes = {
     history: PropTypes.shape({
         push: PropTypes.func.isRequired
     }).isRequired,
-    login: PropTypes.func.required
+    login: PropTypes.func.isRequired
 }
 export default connect(null, { login })(LoginPage);
