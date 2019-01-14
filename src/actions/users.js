@@ -3,5 +3,8 @@ import api from '../api'
 
 export const signup = (data) => (dispatch) => (
   api.user.signup(data)
-  .then(user => dispatch(userLoggedIn(user))) 
+  .then(user => {
+      localStorage.bookwormJWT = user.token;
+      dispatch(userLoggedIn(user));
+    }) 
 )
