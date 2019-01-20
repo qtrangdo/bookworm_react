@@ -4,6 +4,8 @@ import { Route } from 'react-router-dom';
 import HomePage from './components/pages/HomePage';
 import LoginPage from './components/pages/LoginPage';
 import SignupPage from './components/pages/SignupPage';
+import ForgotPasswordPage from './components/pages/ForgotPasswordPage';
+import ResetPasswordPage from './components/pages/ResetPasswordPage';
 import ConfirmationPage from './components/pages/ConfirmationPage';
 import Dashboard from './components/pages/Dashboard';
 import UserRoute from './components/routes/UserRoute';
@@ -15,6 +17,8 @@ const App = ({ location }) => (
     <Route location={location} path = "/confirmation/:token" exact component={ConfirmationPage} />
     <GuestRoute location={location} path = "/login" exact component={LoginPage} />
     <GuestRoute location={location} path = "/signup" exact component={SignupPage} />
+    <GuestRoute location={location} path = "/forgot_password" exact component={ForgotPasswordPage} />
+    <GuestRoute location={location} path = "/reset_password" exact component={ResetPasswordPage} />
     <UserRoute location={location} path = "/dashboard" exact component={Dashboard} />
   </div>
 );
