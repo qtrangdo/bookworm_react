@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Button, Message } from 'semantic-ui-react';
+import { Form, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import InlineError from '../messages/InlineError';
 import isEmail from 'validator/lib/isEmail';
