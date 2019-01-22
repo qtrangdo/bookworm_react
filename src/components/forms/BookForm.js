@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Button, Grid, Segment, Image } from 'semantic-ui-react';
+import { Form, Button, Grid, Segment, Image, a } from 'semantic-ui-react';
 import InlineError from '../messages/InlineError';
 
 class BookForm extends Component {
@@ -14,6 +14,7 @@ class BookForm extends Component {
         },
         covers: this.props.book.covers,
         loading: false,
+        index: 0,
         errors: {}
     }
 
@@ -57,6 +58,12 @@ class BookForm extends Component {
                 );
         }
     };
+
+    changeCover = () => {
+        const { index, covers } = this.state;
+        const newIndex = index + 1 >= covers.length? 0 : index + 1;
+        this.setState({ index: newIndex, data: {...this.state.data, cover: covers[newIndex]} })
+    }
 
     validate = data => {
         const errors = {};
@@ -112,11 +119,13 @@ class BookForm extends Component {
                                     {errors.pages && <InlineError text={errors.pages} />}
                                 </Form.Field>
                             </Grid.Column>
-                            <Grid.Column>
-
-                            </Grid.Column>
                         </Grid.Row>
-                        <Image size='small' src={data.cover}></Image>
+                        <Grid.Column>
+                            <Image size='small' src={data.cover}></Image>
+                            {this.state.covers.length > 1 && (<a role='button' tabIndex={0}
+                                onClick={this.changeCover}>Another cover</a>)
+                            }
+                        </Grid.Column>
                         <Grid.Row>
                             <Button primary>Save</Button>
                         </Grid.Row>
