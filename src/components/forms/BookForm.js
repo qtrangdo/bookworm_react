@@ -119,13 +119,13 @@ class BookForm extends Component {
                                     {errors.pages && <InlineError text={errors.pages} />}
                                 </Form.Field>
                             </Grid.Column>
+                            <Grid.Column>
+                                <Image size='small' src={data.cover}></Image>
+                                {this.state.covers.length > 1 && (<a role='button' tabIndex={0}
+                                    onClick={this.changeCover}>Another cover</a>)
+                                }
+                            </Grid.Column>
                         </Grid.Row>
-                        <Grid.Column>
-                            <Image size='small' src={data.cover}></Image>
-                            {this.state.covers.length > 1 && (<a role='button' tabIndex={0}
-                                onClick={this.changeCover}>Another cover</a>)
-                            }
-                        </Grid.Column>
                         <Grid.Row>
                             <Button primary>Save</Button>
                         </Grid.Row>
@@ -139,13 +139,12 @@ class BookForm extends Component {
 BookForm.propTypes = {
     submit: PropTypes.func.isRequired,
     book: PropTypes.shape({
-        goodreadsId: PropTypes.number.isRequired,
+        goodreadsId: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
         authors: PropTypes.string.isRequired,
         covers: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-        pages: PropTypes.number.isRequired
-    }).isRequired,
-    covers: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+        pages: PropTypes.number
+    }).isRequired
 }
 
 export default BookForm;
