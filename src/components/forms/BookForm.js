@@ -139,7 +139,7 @@ class BookForm extends Component {
 BookForm.propTypes = {
     submit: PropTypes.func.isRequired,
     book: PropTypes.shape({
-        goodreadsId: PropTypes.string.isRequired,
+        goodreadsId: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
         authors: PropTypes.string.isRequired,
         covers: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
