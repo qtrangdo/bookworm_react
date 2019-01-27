@@ -79,7 +79,7 @@ class BookForm extends Component {
         return (
             <Segment>
                 <Form onSubmit={this.onSubmit} loading={loading}>
-                    <Grid columns={2} fluid stackable>
+                    <Grid columns={2} stackable>
                         <Grid.Row>
                             <Grid.Column>
                                 <Form.Field error={!!errors.title} >
@@ -109,11 +109,12 @@ class BookForm extends Component {
                                 <Form.Field error={!!errors.pages} >
                                     <label htmlFor='title'>Pages</label>
                                     <input
-                                        type='number'
+                                        disabled={data.page === undefined}
+                                        type='text'
                                         id='pages'
                                         name='pages'
                                         placeholder='Pages'
-                                        value={data.pages}
+                                        value={data.pages !== undefined ? data.pages : 'Loading'}
                                         onChange={this.onChangeNumber}
                                     />
                                     {errors.pages && <InlineError text={errors.pages} />}
